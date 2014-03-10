@@ -1,0 +1,32 @@
+ <?php
+
+   $db_host = 'localhost';
+   $db_user = 'root';
+   $db_password = 'abhishek';
+   $db_name = 'pragyan14_ppl_round2';
+   
+   $db = new mysqli($db_host, $db_user ,$db_password,$db_name );
+   $count=$_POST['plID'];
+  $pid=$_POST['pid'];
+   if($db)
+   {
+		$result1 = $db->query("SELECT  * FROM `players_photos` WHERE player_id='".$count."' ")->fetch_assoc();
+            	echo json_encode($result1);
+		if(isset($pid))
+		{
+			$result2=$db->query($connect,"SELECT * FROM `Teams` WHERE team_no='".$pid."' ")->fetch_assoc();
+			echo json_encode($result2);
+
+		}	
+
+   }	
+	
+
+
+	
+	
+?>
+
+
+
+
